@@ -18,7 +18,7 @@ Para facilitar la evaluación de los revisores pares y editores de la revista ci
 *   **Formatos de Interoperabilidad:** Esquemas JSON anidados para el intercambio de datos entre entidades del Estado.
 
 ## Replicabilidad y Licencia
-Este material se distribuye bajo la licencia de código abierto **MIT**, promoviendo la transparencia de datos y permitiendo a las instituciones del sector público replicar de manera íntegra los resultados de velocidad y eficiencia documentados en el manuscrito principal.
+Este material se distribuye bajo la licencia de código abierto **MIT**, promoviendo la transparencia de datos y permitiendo a las instituciones del sector público replicar las estructuras que se han definido.
 
 ---
 **Cita del Software (APA 7):**
