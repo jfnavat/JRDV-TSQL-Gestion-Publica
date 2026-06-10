@@ -1,1 +1,4 @@
-
+SELECT SUM(JSON_VALUE(p.data, '$.gestion.montos.devengado' RETURNING NUMBER)) AS total_ejecutado
+FROM presupuesto_completo_dv p
+WHERE JSON_EXISTS(p.data, '$.dimensiones_transversales[*]?(@.categoria == "Adulto Mayor" && @.especifica == "Salud Preventiva")')
+  AND JSON_EXISTS(p.data, '$.dimensiones_transversales[*]?(@.especifica == "Salud Mental")');
