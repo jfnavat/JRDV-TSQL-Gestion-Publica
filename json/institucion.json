@@ -1,0 +1,11 @@
+{
+  "id_institucion": 4,
+  "nombre": "Unidad Ejecutora Administración",
+  "codigo": "001",
+  "tipo": "Ejecutora",
+  "pertenece_a": {
+    "id": 3,
+    "nombre": "Pliego 001: Ministerio de Economía y Finanzas",
+    "tipo": "Pliego"
+  }
+}
