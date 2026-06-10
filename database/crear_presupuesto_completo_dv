@@ -1,0 +1,48 @@
+CREATE OR REPLACE JSON RELATIONAL DUALITY VIEW presupuesto_completo_dv AS
+SELECT JSON {
+    'id'        	: p.id_presupuesto,
+    'ejercicio' 	: p.anio_eje,
+    
+    -- Jerarquía Institucional anidada
+    'institucion' : (
+        SELECT JSON {
+            'ejecutora' : i.nombre,
+            'pliego'    : (SELECT nombre FROM institucion WHERE id = 
+					i.parent_id),
+            'sector'    : (SELECT s.nombre FROM institucion s, 
+					institucion pl 
+                           WHERE s.id = pl.parent_id AND pl.id = 
+					i.parent_id)
+        }
+        FROM institucion i WHERE i.id = p.id_ejecutora
+    ),
+
+    -- Bloque de metas e importes
+    'gestion' : {
+        'metas' : {
+            'finalidad' : p.finalidad_gasto,
+            'meta'      : p.cantidad_meta,
+            'unidad'    : p.unidad_medida
+        },
+        'montos' : {
+            'pia'       : p.monto_pia,
+            'pim'       : p.monto_pim,
+            'devengado' : p.monto_devengado
+            'ejecutado' : p.monto_ejecutado		  
+        }
+    },
+
+    -- DIMENSIONES TRANSVERSALES (Colección OO)
+    'dimensiones_transversales' : [
+        SELECT JSON {
+            'id_tag'		: t.id_impacto,
+            'dimension'	: t.tipo_dimension,
+            'categoria'	: t.subcategoria,
+            'especifica'	: t.especifica,
+            'porcentaje'   : t.valor_asignado
+        }
+        FROM dimensiones_transversales t WITH INSERT UPDATE DELETE
+        WHERE t.id_presupuesto = p.id_presupuesto
+    ]
+}
+FROM presupuesto p WITH INSERT UPDATE DELETE;
