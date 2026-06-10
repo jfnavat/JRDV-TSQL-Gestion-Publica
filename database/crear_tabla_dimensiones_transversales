@@ -1,0 +1,9 @@
+CREATE TABLE dimensiones_transversales 
+( id_impacto 		INTEGER PRIMARY KEY, 
+  id_presupuesto 	INTEGER, -- FK vinculante 
+  tipo_dimension 	VARCHAR2(100), 	-- P.ej: "Ambiental" 
+  subcategoria 		VARCHAR2(200),	-- P.ej: "Mitigación" 
+  especifica 		VARCHAR2(200), 	-- P.ej: "Reforestación" 
+  valor_asignado 	NUMBER(5,2), 	-- P.ej: 30.50 (%) 
+  CONSTRAINT fk_impacto_presupuesto FOREIGN KEY (id_presupuesto) REFERENCES  presupuesto(id_presupuesto) 
+);
