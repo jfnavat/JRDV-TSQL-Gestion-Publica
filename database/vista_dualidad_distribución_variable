@@ -1,0 +1,21 @@
+CREATE OR REPLACE JSON RELATIONAL DUALITY VIEW presupuesto_completo_dv AS
+SELECT JSON {
+    'id'        	: p.id_presupuesto,
+    'monto_base'	: p.monto_devengado,
+    'dimensiones_transversales' : [
+        SELECT JSON {
+            'dimension'     : t.tipo_dimension,
+            'regla_calculo' : {
+                'tipo_logica' : t.tipo_regla, 
+		    -- Ejemplo: 'POR_POBLACION', 'FORMULA_FIJA', 'PRORREO_METAS'
+                'parametros'  : t.json_params, 
+		    -- Variables: { "pob_objetivo": 500, "pob_total": 5500 }
+                -- Se calcula el peso al instante para la vista
+                'peso_actual' : fn_calcular_peso_dinamico(t.id_impacto) 
+            }
+        }
+        FROM impacto_transversal t
+        WHERE t.id_presupuesto = p.id_presupuesto
+    ]
+}
+FROM presupuesto p;
