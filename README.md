@@ -1,8 +1,8 @@
 # JRDV-TSQL-Gestion-Publica
-Material suplementario del artículo científico sobre modelo de datos orientado a objetos con clasificadores flexibles en temas transversales para la base de datos del Presupuesto Público del Perú.
+Material suplementario del artículo científico: Modelo orientado a objetos para la incorporación de temas transversales mediante clasificadores flexibles: aplicación al Presupuesto Público del Perú
 
 ## Descripción del Proyecto
-Este repositorio aloja el material suplementario, artefactos tecnológicos y scripts de base de datos desarrollados en el marco del artículo científico titulado: **"Propuesta de modelo de datos orientado a objetos con clasificadores flexibles en temas transversales para la base de datos del Presupuesto Público del Perú."**.
+Este repositorio aloja el material suplementario, artefactos tecnológicos y scripts de base de datos desarrollados en el marco del artículo científico titulado: **"Modelo orientado a objetos para la incorporación de temas transversales mediante clasificadores flexibles: aplicación al Presupuesto Público del Perú."**.
 
 El objetivo central de esta investigación de maestría es proponer e implementar un modelo de persistencia híbrido utilizando vistas de dualidad relacional de objetos (**JRDV**) en entornos Oracle SQL. Esta solución aborda el desajuste de impedancia y optimiza el rendimiento y la interoperabilidad al procesar estructuras jerárquicas complejas dentro de la administración pública peruana (tales como clasificadores tranversales, institucionales, geográficos y funcionales del Ministerio de Economía y Finanzas).
 
